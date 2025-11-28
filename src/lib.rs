@@ -143,6 +143,12 @@ impl TestLogCollector {
     }
 }
 
+impl Default for TestLogCollector {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl Write for TestLogCollector {
     fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
         let s = String::from_utf8_lossy(buf);
