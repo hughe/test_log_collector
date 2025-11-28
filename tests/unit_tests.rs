@@ -51,12 +51,18 @@ fn test_write_mixed_content() {
     write!(collector, "Another partial").unwrap();
 
     assert_eq!(collector.count(), 2);
-    assert_eq!(collector.clone_lines(), vec!["Partial line completed", "Full line"]);
+    assert_eq!(
+        collector.clone_lines(),
+        vec!["Partial line completed", "Full line"]
+    );
 
     // Flush the remaining partial line
     collector.flush().unwrap();
     assert_eq!(collector.count(), 3);
-    assert_eq!(collector.clone_lines(), vec!["Partial line completed", "Full line", "Another partial"]);
+    assert_eq!(
+        collector.clone_lines(),
+        vec!["Partial line completed", "Full line", "Another partial"]
+    );
 }
 
 #[test]
