@@ -22,9 +22,14 @@ all: build
 build:
 	$(CARGO) build
 
-## test: run the tests
+## test: unit tests via nextest, plus doc tests
+#
+# The `--doc` line is NOT optional. nextest does not run doctests at all,
+# and this crate has 7 of them — replacing a bare `cargo test` with
+# nextest alone would drop them silently, with the suite still green.
 test:
-	$(CARGO) test
+	$(CARGO) nextest run
+	$(CARGO) test --doc
 
 ## check: the lint gate — formatting and clippy, both fatal
 check: fmt clippy
