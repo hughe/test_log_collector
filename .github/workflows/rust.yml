@@ -29,6 +29,7 @@ jobs:
         version: "0.14.2"
         pr-comment: false
         max-size: 2GiB
+        cache-key-prefix: kache-build
 
     - name: Cache cargo registry
       uses: actions/cache@v4
@@ -83,6 +84,7 @@ jobs:
         version: "0.14.2"
         pr-comment: false
         max-size: 2GiB
+        cache-key-prefix: kache-test-matrix
 
     - name: Build
       run: cargo build --verbose
