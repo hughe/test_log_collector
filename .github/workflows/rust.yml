@@ -56,8 +56,16 @@ jobs:
     - name: Build
       run: cargo build --verbose
 
+    - name: Install nextest 0.9.148
+      uses: taiki-e/install-action@v2
+      with:
+        tool: cargo-nextest@0.9.148
+
     - name: Run tests
-      run: cargo test --verbose
+      run: cargo nextest run
+
+    - name: Run doc tests
+      run: cargo test --doc --verbose
 
     - name: Build documentation
       run: cargo doc --no-deps
@@ -89,5 +97,13 @@ jobs:
     - name: Build
       run: cargo build --verbose
 
+    - name: Install nextest 0.9.148
+      uses: taiki-e/install-action@v2
+      with:
+        tool: cargo-nextest@0.9.148
+
     - name: Run tests
-      run: cargo test --verbose
+      run: cargo nextest run
+
+    - name: Run doc tests
+      run: cargo test --doc --verbose
